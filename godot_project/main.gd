@@ -4,6 +4,7 @@ var webxr_interface: XRInterface
 
 func _ready() -> void:
 	$CanvasLayer/EnterVRButton.pressed.connect(_on_enter_vr_pressed)
+	_generate_level_collision($level)
 
 	webxr_interface = XRServer.find_interface("WebXR")
 	if webxr_interface:
@@ -14,6 +15,13 @@ func _ready() -> void:
 		webxr_interface.is_session_supported("immersive-vr")
 	else:
 		$CanvasLayer/StatusLabel.text = "WebXR not available (open this in a browser export)"
+
+
+func _generate_level_collision(node: Node) -> void:
+	if node is MeshInstance3D:
+		node.create_trimesh_collision()
+	for child in node.get_children():
+		_generate_level_collision(child)
 
 
 func _on_session_supported(session_mode: String, supported: bool) -> void:
