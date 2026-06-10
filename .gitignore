@@ -1,0 +1,11 @@
+# Ignore everything by default
+*
+
+# Allow traversal into directories
+!*/
+
+# Allow Python files
+!*.py
+
+# Allow this file
+!.gitignore
