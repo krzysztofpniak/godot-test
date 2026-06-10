@@ -9,3 +9,12 @@
 
 # Allow this file
 !.gitignore
+
+# Allow Godot project files
+!godot_project/project.godot
+!godot_project/main.tscn
+!godot_project/*.gd
+!godot_project/level.glb
+godot_project/.godot/
+godot_project/*.import
+godot_project/node_3d.tscn
