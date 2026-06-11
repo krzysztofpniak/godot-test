@@ -20,5 +20,5 @@ godot_project/*.import
 godot_project/node_3d.tscn
 
 # Allow GitHub Pages export
-!godot_project/docs/
-!godot_project/docs/**
+!docs/
+!docs/**
