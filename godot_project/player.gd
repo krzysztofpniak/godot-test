@@ -54,18 +54,6 @@ func _physics_process(delta: float) -> void:
 	if jump_pressed and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Debug spheres: move with thumbstick input, glow yellow when the
-	# jump button on that controller is pressed.
-	var left_stick_dbg: Vector2 = left_controller.get_vector2("thumbstick")
-	var right_stick_dbg: Vector2 = right_controller.get_vector2("thumbstick")
-	left_debug_sphere.position = left_debug_base + Vector3(left_stick_dbg.x, -left_stick_dbg.y, 0) * 0.1
-	right_debug_sphere.position = right_debug_base + Vector3(right_stick_dbg.x, -right_stick_dbg.y, 0) * 0.1
-
-	var left_glow := left_controller.is_button_pressed("ax_button")
-	var right_glow := right_controller.is_button_pressed("ax_button")
-	left_debug_sphere.scale = Vector3.ONE * (2.0 if left_glow else 1.0)
-	right_debug_sphere.scale = Vector3.ONE * (2.0 if right_glow else 1.0)
-
 	var basis := camera.global_transform.basis
 	var move := basis.x * move_input.x + basis.z * move_input.y
 	move.y = 0
